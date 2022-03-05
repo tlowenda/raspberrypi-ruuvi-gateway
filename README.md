@@ -26,6 +26,7 @@ sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 ```
 If everything has been properly set up, we can now browse over to raspberrypi.local:3000 and see web-ui of grafana. Default user and password is admin/admin.
+![alt text](https://github.com/tlowenda/raspberrypi-ruuvi-gateway/blob/main/example_dashboard.png)
 
 ## Create systemd service for running the influx_hanlder.py
 
