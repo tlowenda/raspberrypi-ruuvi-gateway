@@ -1,0 +1,3 @@
+ruuvitag_sensor
+influxdb
+dotenv
