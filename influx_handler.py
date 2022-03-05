@@ -1,6 +1,7 @@
 """
 Get data for sensors using rx and write it to InfluxDB
-Check guide and requirements from post_to_influxdb.py
+Check guide and requirements from post_to_influxdb.py 
+in https://github.com/ttu/ruuvitag-sensor/blob/master/examples/post_to_influxdb_rx.py
 """
 
 from influxdb import InfluxDBClient
