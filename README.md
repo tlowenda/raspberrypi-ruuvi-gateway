@@ -20,9 +20,35 @@ Grafana is used to create dashboard and run some simple analytics on data. Downl
 
 Enable grafana with
 ```
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable grafana-server
-sudo /bin/systemctl start grafana-server
-sudo /bin/systemctl status grafana-server
+sudo systemctl daemon-reload
+sudo systemctl enable grafana-server
+sudo systemctl start grafana-server
+sudo systemctl status grafana-server
 ```
 If everything has been properly set up, we can now browse over to raspberrypi.local:3000 and see web-ui of grafana. Default user and password is admin/admin.
+
+## Create systemd service for running the influx_hanlder.py
+
+```
+sudo nano /etc/systemd/system/ruuvi.service
+```
+
+```
+[Unit]
+Description=Ruuvitag service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/ruuvitag
+ExecStart=/usr/bin/python3 /home/pi/ruuvitag/influx_handler.py
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+```
+````
+sudo systemctl daemon-reload
+sudo systemctl enable ruuvi.service
+sudo systemctl start ruuvi.service
+````
