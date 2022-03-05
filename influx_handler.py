@@ -46,8 +46,10 @@ def write_to_influxdb(received_data):
     client.write_points(json_body)
     #DEBUG print(json_body)
 
-
+# Set interval to run the handler
 interval_in_ms = 300000
+
+# Tag each Ruuvi sensor for convenience in a dict
 tags = {
     os.getenv('RUUVI1'): 'Kellari',
     os.getenv('RUUVI2'): 'Kylpyhuone',
