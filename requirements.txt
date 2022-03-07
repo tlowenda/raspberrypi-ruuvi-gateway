@@ -1,3 +1,3 @@
-ruuvitag_sensor
-influxdb
-dotenv
+ruuvitag-sensor==1.2.0
+influxdb==5.2.3
+python-dotenv==0.19.2
