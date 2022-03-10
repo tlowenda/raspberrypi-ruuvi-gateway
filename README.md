@@ -1,5 +1,5 @@
 # raspberrypi-ruuvi-gateway
-This project uses Raspberry Pi as a gateway to push Ruuvi data to InfluxDB 1.8+ database.
+This project uses Raspberry Pi as a gateway to push RuuviTag data to InfluxDB 1.8+ database.
 
 ## Prerequisite steps for Raspberry Pi
 Setting up the permissions of Bluetooth adapter of Raspberry Pi is as follows
