@@ -43,14 +43,62 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/pi/ruuvitag
-ExecStart=/usr/bin/python3 /home/pi/ruuvitag/influx_handler.py
+ExecStart=/usr/bin/python3 /home/pi/ruuvitag/ruuvi_handler.py
 User=pi
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+## Create systemd service and timer for weather API handler
+### Weather service
+```
+sudo nano /etc/systemd/system/weather.service
+```
+
+```
+[Unit]
+Description=Weather api service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/ruuvitag
+ExecStart=/usr/bin/python3 /home/pi/ruuvitag/weather_handler.py
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+```
+### Weather service timer
+```
+sudo nano /etc/systemd/system/weather.timer
+```
+
+```
+[Unit]
+Description=Schedule an API call every hour
+Requires=weather.service
+Type=oneshot
+#RefuseManualStart=no  # Allow manual starts
+#RefuseManualStop=no   # Allow manual stops
+
+[Timer]
+#Execute job if it missed a run due to machine being off
+Persistent=false
+#Run 120 seconds after boot for the first time
+OnBootSec=120
+#Run every hour thereafter
+OnCalendar=*-*-* *:00:00
+#File describing job to execute
+Unit=weather.service
+
+[Install]
+WantedBy=timers.target
+```
+
 ````
 sudo systemctl daemon-reload
-sudo systemctl enable ruuvi.service
-sudo systemctl start ruuvi.service
+sudo systemctl enable ruuvi.service weather.service weather.timer
+sudo systemctl start ruuvi.service weather.timer
 ````
