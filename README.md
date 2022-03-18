@@ -79,9 +79,6 @@ sudo nano /etc/systemd/system/weather.timer
 [Unit]
 Description=Schedule an API call every hour
 Requires=weather.service
-Type=oneshot
-#RefuseManualStart=no  # Allow manual starts
-#RefuseManualStop=no   # Allow manual stops
 
 [Timer]
 #Execute job if it missed a run due to machine being off
