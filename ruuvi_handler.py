@@ -16,8 +16,11 @@ load_dotenv()
 client = InfluxDBClient(host=os.getenv('INFLUX_HOST'), port=os.getenv('INFLUX_PORT'), database=os.getenv('INFLUX_DATABASE'))
 
 def write_to_influxdb(received_data):
-    """
-    Convert data into RuuviCollecor naming schme and scale
+    """Convert data from RuuviCollecor naming scheme to suitable json format. 
+    Updates database.
+
+    Args:
+        received_data (list): Ruuvi raw data
     """
     dataFormat = received_data[1]['data_format'] if ('data_format' in received_data[1]) else None
     fields = {}
