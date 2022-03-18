@@ -29,7 +29,7 @@ If everything has been properly set up, we can now browse over to raspberrypi.lo
 ### Example dashboard using Grafana
 ![Dashboard](example_dashborad.png)
 
-## Create systemd service for running the influx_hanlder.py
+## Create systemd service for running the ruuvi_hanlder.py
 
 ```
 sudo nano /etc/systemd/system/ruuvi.service
